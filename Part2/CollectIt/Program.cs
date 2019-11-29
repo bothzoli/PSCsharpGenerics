@@ -16,6 +16,18 @@ namespace CollectIt
             {
                 Console.WriteLine(line.Dequeue().Name);
             }
+
+            Console.WriteLine("---");
+
+            Stack<Employee> stack = new Stack<Employee>();
+            stack.Push(new Employee { Name = "Scott" });
+            stack.Push(new Employee { Name = "Allen" });
+            stack.Push(new Employee { Name = "Dani" });
+
+            while (stack.Count > 0)
+            {
+                Console.WriteLine(stack.Pop().Name);
+            }
         }
     }
 }
