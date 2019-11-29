@@ -7,19 +7,20 @@ namespace CollectIt
     {
         static void Main(string[] args)
         {
-            LinkedList<int> list = new LinkedList<int>();
-            list.AddFirst(2);
-            list.AddFirst(3);
+            var employeesByDepartment = new Dictionary<string, List<Employee>>();
 
-            var first = list.First;
-            list.AddAfter(first, 5);
-            list.AddBefore(first, 10);
+            employeesByDepartment.Add("Engineering",
+                new List<Employee>() { new Employee{ Name = "Scott" } });
 
-            var node = list.First;
-            while (node != null)
+            employeesByDepartment["Engineering"]
+                .Add(new Employee{ Name = "Allen" });
+
+            foreach (var department in employeesByDepartment)
             {
-                Console.WriteLine(node.Value);
-                node = node.Next;
+                foreach (var employee in department.Value)
+                {
+                    Console.WriteLine($"{department.Key}: {employee.Name}");
+                }
             }
         }
     }
