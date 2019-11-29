@@ -7,15 +7,19 @@ namespace CollectIt
     {
         static void Main(string[] args)
         {
-            HashSet<Employee> set = new HashSet<Employee>();
-            var employee = new Employee { Name = "Scott" };
-            set.Add(employee);
-            set.Add(new Employee { Name = "Allen" });
-            set.Add(employee);
+            LinkedList<int> list = new LinkedList<int>();
+            list.AddFirst(2);
+            list.AddFirst(3);
 
-            foreach (var item in set)
+            var first = list.First;
+            list.AddAfter(first, 5);
+            list.AddBefore(first, 10);
+
+            var node = list.First;
+            while (node != null)
             {
-                Console.WriteLine(item.Name);
+                Console.WriteLine(node.Value);
+                node = node.Next;
             }
         }
     }
