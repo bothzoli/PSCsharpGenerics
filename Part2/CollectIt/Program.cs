@@ -7,16 +7,14 @@ namespace CollectIt
     {
         static void Main(string[] args)
         {
-            List<Employee> employees = new List<Employee> {
-                new Employee { Name = "Scott" },
-                new Employee { Name = "Allen" }
-            };
+            Queue<Employee> line = new Queue<Employee>();
+            line.Enqueue(new Employee { Name = "Scott" });
+            line.Enqueue(new Employee { Name = "Allen" });
+            line.Enqueue(new Employee { Name = "Dani" });
 
-            employees.Add(new Employee { Name = "Dani" });
-
-            foreach (var employee in employees)
+            while (line.Count > 0)
             {
-                Console.WriteLine(employee.Name);
+                Console.WriteLine(line.Dequeue().Name);
             }
         }
     }
