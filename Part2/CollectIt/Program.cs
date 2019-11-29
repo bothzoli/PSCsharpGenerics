@@ -7,13 +7,13 @@ namespace CollectIt
     {
         static void Main(string[] args)
         {
-            var employeesByDepartment = new Dictionary<string, List<Employee>>();
+            var employeesByDepartment = new SortedDictionary<string, List<Employee>>();
 
-            employeesByDepartment.Add("Engineering",
+            employeesByDepartment.Add("Sales",
                 new List<Employee>() { new Employee{ Name = "Scott" } });
 
-            employeesByDepartment["Engineering"]
-                .Add(new Employee{ Name = "Allen" });
+            employeesByDepartment.Add("Engineering",
+                new List<Employee>() { new Employee{ Name = "Allen" } });
 
             foreach (var department in employeesByDepartment)
             {
