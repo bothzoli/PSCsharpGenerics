@@ -34,7 +34,7 @@ namespace CollectIt.Tests
             list.AddFirst("Hello");
             list.AddLast("World");
 
-            Assert.True(list.Contains("Hello"));
+            Assert.Contains("Hello", list);
         }
     }
 }

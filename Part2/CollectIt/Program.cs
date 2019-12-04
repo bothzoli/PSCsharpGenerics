@@ -7,19 +7,25 @@ namespace CollectIt
     {
         static void Main(string[] args)
         {
-            var employeesByDepartment = new SortedDictionary<string, List<Employee>>();
+            var employeesByDepartment = new DepartmentCollection();
 
-            employeesByDepartment.Add("Sales",
-                new List<Employee>() { new Employee{ Name = "Scott" } });
+            employeesByDepartment
+                .Add("Sales", new Employee { Name = "Scott" })
+                .Add("Sales", new Employee { Name = "Alex" })
+                .Add("Sales", new Employee { Name = "Dani" });
+            
+            employeesByDepartment
+                .Add("Engineering", new Employee { Name = "Joy" })
+                .Add("Engineering", new Employee { Name = "Dani" })
+                .Add("Engineering", new Employee { Name = "Dani" });
 
-            employeesByDepartment.Add("Engineering",
-                new List<Employee>() { new Employee{ Name = "Allen" } });
 
             foreach (var department in employeesByDepartment)
             {
+                Console.WriteLine(department.Key);
                 foreach (var employee in department.Value)
                 {
-                    Console.WriteLine($"{department.Key}: {employee.Name}");
+                    Console.WriteLine($"\t{employee.Name}");
                 }
             }
         }

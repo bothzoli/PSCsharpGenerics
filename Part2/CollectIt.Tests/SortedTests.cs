@@ -30,7 +30,7 @@ namespace CollectIt.Tests
 
             var enumerator = set.GetEnumerator();
             enumerator.MoveNext();
-            Assert.Equal(enumerator.Current, 1);
+            Assert.Equal(1, enumerator.Current);
         }
     }
 }

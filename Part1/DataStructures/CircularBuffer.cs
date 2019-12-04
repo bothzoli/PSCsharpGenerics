@@ -2,53 +2,28 @@ using System.Collections;
 
 namespace DataStructures
 {
-    public class CircularBuffer<T>
+    public class CircularBuffer<T> : Buffer<T>
     {
-        private T[] _buffer;
-        private int _start;
-        private int _end;
+        private int _capacity;
 
-        public CircularBuffer () : this(capacity:10)
-	    {
-	    }
-        
-        public CircularBuffer(int capacity)
+        public CircularBuffer(int capacity = 10)
         {
-            _buffer = new T[capacity+1];
-            _start = 0;
-            _end = 0;
+            _capacity = capacity;
         }
 
-        public void Write(T value)
+        public bool IsFull
         {
-            _buffer[_end] = value;
-            _end = (_end + 1) % _buffer.Length;
-            if (_end == _start)
+            get { return _queue.Count == _capacity; }
+        }
+
+        public override void Write(T value)
+        {
+            base.Write(value);
+
+            if (_queue.Count > _capacity)
             {
-                _start = (_start + 1) % _buffer.Length;
+                _queue.Dequeue();
             }
         }
-
-        public T Read()
-        {
-            var result = _buffer[_start];
-            _start = (_start + 1) % _buffer.Length;
-            return result;
-        }
-
-        public int Capacity 
-        { 
-            get { return _buffer.Length; } 
-        }
-
-        public bool IsEmpty 
-        {
-            get { return _end == _start; }
-        }
-
-        public bool IsFull 
-        {
-            get { return (_end + 1) % _buffer.Length == _start;  }
-        }       
     }
 }

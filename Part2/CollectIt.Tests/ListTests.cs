@@ -29,7 +29,7 @@ namespace CollectIt.Tests
         {
             List<int> integers = new List<int> { 1, 2, 3 };
 
-            Assert.Equal(integers.IndexOf(3), 2);
+            Assert.Equal(2, integers.IndexOf(3));
         }
     }
 }
